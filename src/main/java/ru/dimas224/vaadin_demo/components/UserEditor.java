@@ -11,7 +11,7 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import lombok.Setter;
-import ru.dimas224.vaadin_demo.domain.UserEntity;
+import ru.dimas224.vaadin_demo.domain.User;
 import ru.dimas224.vaadin_demo.repo.UserRepo;
 
 @SpringComponent
@@ -19,7 +19,7 @@ import ru.dimas224.vaadin_demo.repo.UserRepo;
 public class UserEditor extends VerticalLayout implements KeyNotifier {
     private final UserRepo userRepo;
 
-    private UserEntity user;
+    private User user;
 
     private TextField firstName = new TextField("Имя");
     private TextField lastName = new TextField("Фамилия");
@@ -30,7 +30,7 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
     private Button delete = new Button("Удалить", VaadinIcon.TRASH.create());
     private HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
-    private Binder<UserEntity> binder = new Binder<>(UserEntity.class);
+    private Binder<User> binder = new Binder<>(User.class);
 
     @Setter
     private ChangeHandler changeHandler;
@@ -69,7 +69,7 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
         changeHandler.onChange();
     }
 
-    public void editUser(UserEntity newUser) {
+    public void editUser(User newUser) {
         if (newUser == null) {
             setVisible(false);
             return;
