@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: "postgres"
+    password: "postgres"
+    url: "jdbc:postgresql://localhost:5436/vaadin"
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+
